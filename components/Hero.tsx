@@ -6,9 +6,9 @@ export const Hero: React.FC = () => {
     <div className="relative bg-teal-800 overflow-hidden">
       <div className="absolute inset-0">
         <img
-          className="w-full h-full object-cover mix-blend-multiply filter opacity-40"
-          src="https://picsum.photos/1920/1080?random=1&grayscale"
-          alt="Tecnologia e Pets"
+          className="w-full h-full object-cover mix-blend-multiply filter opacity-50"
+          src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=1920&auto=format&fit=crop"
+          alt="Cão olhando para a câmera"
         />
       </div>
       <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 text-center md:text-left">

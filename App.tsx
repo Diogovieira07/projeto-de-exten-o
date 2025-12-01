@@ -4,7 +4,6 @@ import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { ProjectDetails } from './components/ProjectDetails';
 import { Gallery } from './components/Gallery';
-import { Blog } from './components/Blog';
 import { AiAssistant } from './components/AiAssistant';
 import { Resources } from './components/Resources';
 import { Contact } from './components/Contact';
@@ -19,7 +18,6 @@ function App() {
         <About />
         <ProjectDetails />
         <Gallery />
-        <Blog />
         <AiAssistant />
         <Resources />
         <Contact />

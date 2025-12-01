@@ -9,7 +9,6 @@ export const Header: React.FC = () => {
     { name: 'Quem Somos', href: '#quem-somos' },
     { name: 'Soluções', href: '#projeto' },
     { name: 'Galeria', href: '#galeria' },
-    { name: 'Blog', href: '#blog' },
     { name: 'Assistente IA', href: '#ia' },
     { name: 'Recursos', href: '#recursos' },
     { name: 'Contato', href: '#contato' },

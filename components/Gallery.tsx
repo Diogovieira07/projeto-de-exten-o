@@ -4,29 +4,34 @@ import { Camera } from 'lucide-react';
 export const Gallery: React.FC = () => {
   const images = [
     {
-      url: "https://picsum.photos/600/400?random=101",
-      title: "Monitoramento Remoto",
-      desc: "Veterinários acompanhando pacientes via app"
+      // Vet examining a dog
+      url: "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=800&auto=format&fit=crop",
+      title: "Cuidado Veterinário",
+      desc: "Atenção especializada para saúde do seu pet"
     },
     {
-      url: "https://picsum.photos/600/800?random=102",
-      title: "Wearables Caninos",
-      desc: "Tecnologia vestível para cães de serviço"
+      // Cute Cat close up
+      url: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=800&auto=format&fit=crop",
+      title: "Monitoramento Felino",
+      desc: "Soluções pensadas para o conforto dos gatos"
     },
     {
-      url: "https://picsum.photos/600/400?random=103",
-      title: "Adoção Responsável",
-      desc: "Encontros promovidos pela plataforma"
+      // Happy Dog outdoors
+      url: "https://images.unsplash.com/photo-1544568100-847a948585b9?q=80&w=800&auto=format&fit=crop",
+      title: "Adoção e Felicidade",
+      desc: "Encontrando lares amorosos para cada amigo"
     },
     {
-      url: "https://picsum.photos/600/600?random=104",
-      title: "Diagnóstico por Imagem",
-      desc: "IA auxiliando na identificação de problemas"
+      // Cat playing or relaxing
+      url: "https://images.unsplash.com/photo-1519052537078-e6302a4968ef?q=80&w=800&auto=format&fit=crop",
+      title: "Bem-estar em Casa",
+      desc: "Tecnologia integrada ao dia a dia do animal"
     },
     {
-      url: "https://picsum.photos/600/400?random=105",
-      title: "Felicidade Pet",
-      desc: "O objetivo final de toda nossa tecnologia"
+      // Human and Dog high five/paw
+      url: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=800&auto=format&fit=crop",
+      title: "Conexão Real",
+      desc: "Fortalecendo o vínculo entre tutor e pet"
     }
   ];
 
@@ -36,7 +41,7 @@ export const Gallery: React.FC = () => {
         <div className="flex items-center justify-between mb-12">
             <div>
                 <h2 className="text-3xl font-extrabold text-gray-900">Galeria Pet Tech</h2>
-                <p className="mt-2 text-gray-500">Imagens que ilustram nossa visão de futuro.</p>
+                <p className="mt-2 text-gray-500">Momentos que nos inspiram a inovar.</p>
             </div>
             <div className="hidden md:flex bg-teal-50 p-3 rounded-full">
                 <Camera className="h-6 w-6 text-teal-600" />
