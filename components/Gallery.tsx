@@ -2,42 +2,45 @@ import React from 'react';
 import { Camera } from 'lucide-react';
 
 export const Gallery: React.FC = () => {
+  // Timestamp to force new images on reload
+  const timestamp = Date.now();
+  
   const images = [
     {
-      // Vet with dog
-      url: "https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?q=80&w=800&auto=format&fit=crop",
-      title: "Cuidado Profissional",
-      desc: "Tecnologia a serviço da medicina veterinária"
+      // Fixed keyword: just 'veterinarian' is more reliable than 'veterinarian,dog'
+      url: `https://loremflickr.com/800/600/veterinarian?random=1&t=${timestamp}`,
+      title: "Cuidado Veterinário",
+      desc: "Atenção especializada para saúde do seu pet"
     },
     {
-      // Cat eyes
-      url: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=800&auto=format&fit=crop",
-      title: "Olhar Felino",
-      desc: "Monitoramento comportamental inteligente"
+      // Keyword: Cat
+      url: `https://loremflickr.com/800/600/cat?random=2&t=${timestamp}`,
+      title: "Monitoramento Felino",
+      desc: "Soluções pensadas para o conforto dos gatos"
     },
     {
-      // Dogs playing
-      url: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=800&auto=format&fit=crop",
-      title: "Socialização",
-      desc: "Apps para encontros e brincadeiras em parques"
+      // Keyword: Dog
+      url: `https://loremflickr.com/800/600/dog?random=3&t=${timestamp}`,
+      title: "Adoção e Felicidade",
+      desc: "Encontrando lares amorosos para cada amigo"
     },
     {
-      // Dog tech/smart
-      url: "https://images.unsplash.com/photo-1587559070757-f72a388edbba?q=80&w=800&auto=format&fit=crop",
-      title: "Pets Conectados",
-      desc: "Wearables e coleiras inteligentes (IoT)"
+      // Keyword: Sleeping Cat
+      url: `https://loremflickr.com/800/600/cat,sleep?random=4&t=${timestamp}`,
+      title: "Bem-estar em Casa",
+      desc: "Tecnologia integrada ao dia a dia do animal"
     },
     {
-      // Cat and human
-      url: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=800&auto=format&fit=crop",
-      title: "Laços Fortes",
-      desc: "Aproximando tutores e seus companheiros"
+      // Keyword: Dog and Human
+      url: `https://loremflickr.com/800/600/dog,human?random=5&t=${timestamp}`,
+      title: "Conexão Real",
+      desc: "Fortalecendo o vínculo entre tutor e pet"
     },
     {
-      // Cute Puppy
-      url: "https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=800&auto=format&fit=crop",
-      title: "Novos Começos",
-      desc: "Facilitando a adoção responsável"
+       // Keyword: Puppy
+       url: `https://loremflickr.com/800/600/puppy?random=6&t=${timestamp}`,
+       title: "Filhotes",
+       desc: "Cuidado especial para os primeiros meses"
     }
   ];
 
@@ -47,62 +50,28 @@ export const Gallery: React.FC = () => {
         <div className="flex items-center justify-between mb-12">
             <div>
                 <h2 className="text-3xl font-extrabold text-gray-900">Galeria Pet Tech</h2>
-                <p className="mt-2 text-gray-500">Momentos que nos inspiram a inovar.</p>
+                <p className="mt-2 text-gray-500">Momentos que nos inspiram a inovar (Imagens dinâmicas).</p>
             </div>
             <div className="hidden md:flex bg-teal-50 p-3 rounded-full">
                 <Camera className="h-6 w-6 text-teal-600" />
             </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
-           {/* Custom Masonry-like Grid */}
-           <div className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-2xl shadow-md cursor-pointer">
-                <img src={images[0].url} alt={images[0].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <h3 className="text-white font-bold text-xl">{images[0].title}</h3>
-                    <p className="text-gray-200 text-sm">{images[0].desc}</p>
+        {/* Uniform Grid Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+           {images.map((img, index) => (
+             <div key={index} className="group relative h-72 w-full overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-gray-100">
+                <img 
+                  src={img.url} 
+                  alt={img.title} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <h3 className="text-white font-bold text-xl">{img.title}</h3>
+                    <p className="text-gray-200 text-sm mt-1">{img.desc}</p>
                 </div>
-           </div>
-
-           <div className="relative group overflow-hidden rounded-2xl shadow-md cursor-pointer">
-                <img src={images[1].url} alt={images[1].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                    <h3 className="text-white font-bold text-lg">{images[1].title}</h3>
-                    <p className="text-gray-200 text-xs">{images[1].desc}</p>
-                </div>
-           </div>
-
-           <div className="relative group overflow-hidden rounded-2xl shadow-md cursor-pointer">
-                <img src={images[2].url} alt={images[2].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                    <h3 className="text-white font-bold text-lg">{images[2].title}</h3>
-                    <p className="text-gray-200 text-xs">{images[2].desc}</p>
-                </div>
-           </div>
-
-           <div className="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-2xl shadow-md cursor-pointer">
-                <img src={images[3].url} alt={images[3].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                    <h3 className="text-white font-bold text-lg">{images[3].title}</h3>
-                    <p className="text-gray-200 text-xs">{images[3].desc}</p>
-                </div>
-           </div>
-           
-           <div className="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-2xl shadow-md cursor-pointer">
-                <img src={images[4].url} alt={images[4].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                    <h3 className="text-white font-bold text-lg">{images[4].title}</h3>
-                    <p className="text-gray-200 text-xs">{images[4].desc}</p>
-                </div>
-           </div>
-
-             <div className="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-2xl shadow-md cursor-pointer">
-                <img src={images[5].url} alt={images[5].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <h3 className="text-white font-bold text-xl">{images[5].title}</h3>
-                    <p className="text-gray-200 text-sm">{images[5].desc}</p>
-                </div>
-           </div>
+             </div>
+           ))}
         </div>
       </div>
     </section>

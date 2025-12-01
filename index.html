@@ -8,8 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Fonte Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        /* Animação suave para o chat */
+        .chat-bubble { animation: fadeIn 0.3s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 <script type="importmap">
 {
@@ -24,6 +29,548 @@
 </script>
 </head>
 <body class="bg-gray-50 text-gray-800">
-    <div id="root"></div>
+
+    <!-- HEADER -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="bg-teal-600 p-1.5 rounded-lg mr-2">
+                        <i data-lucide="paw-print" class="text-white h-6 w-6"></i>
+                    </div>
+                    <span class="font-bold text-xl text-gray-900 tracking-tight">
+                        Pet<span class="text-teal-600">Tech</span>
+                    </span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <nav class="hidden lg:flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-teal-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                    <a href="#quem-somos" class="text-gray-600 hover:text-teal-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">Quem Somos</a>
+                    <a href="#projeto" class="text-gray-600 hover:text-teal-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">Soluções</a>
+                    <a href="#galeria" class="text-gray-600 hover:text-teal-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">Galeria</a>
+                    <a href="#ia" class="text-gray-600 hover:text-teal-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">Assistente IA</a>
+                    <a href="#recursos" class="text-gray-600 hover:text-teal-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">Recursos</a>
+                    <a href="#contato" class="text-gray-600 hover:text-teal-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">Contato</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-teal-600 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Home</a>
+                <a href="#quem-somos" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Quem Somos</a>
+                <a href="#projeto" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Soluções</a>
+                <a href="#galeria" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Galeria</a>
+                <a href="#ia" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Assistente IA</a>
+                <a href="#recursos" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Recursos</a>
+                <a href="#contato" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Contato</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <div class="relative bg-teal-800 overflow-hidden">
+        <div class="absolute inset-0">
+            <!-- Imagem fixa de cachorro de alta qualidade -->
+            <img class="w-full h-full object-cover mix-blend-multiply filter opacity-50"
+                 src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1920&auto=format&fit=crop"
+                 alt="Cães brincando">
+        </div>
+        <div class="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 text-center md:text-left">
+            <div class="inline-flex items-center px-3 py-1 rounded-full bg-teal-700 bg-opacity-50 text-teal-100 text-sm font-semibold mb-6 backdrop-blur-sm border border-teal-500">
+                <span class="mr-2">🚀</span> Inovação no IFCE Iguatu
+            </div>
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-7xl">
+                Bem-vindo ao <br class="hidden md:block" />
+                <span class="text-teal-300">Pet Tech</span>
+            </h1>
+            <p class="mt-6 text-xl text-teal-50 max-w-3xl font-light leading-relaxed">
+                Transformando o cuidado animal através da tecnologia. 
+                Aplicativos, IoT e plataformas voltadas à saúde, adoção e bem-estar dos seus melhores amigos.
+            </p>
+            <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <a href="#projeto" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-lg text-teal-800 bg-white hover:bg-teal-50 shadow-lg transition-transform hover:-translate-y-1">
+                    Nossas Soluções
+                    <i data-lucide="smartphone" class="w-5 h-5 ml-2"></i>
+                </a>
+                <a href="#ia" class="inline-flex items-center justify-center px-8 py-4 border border-teal-300 text-base font-bold rounded-lg text-white bg-transparent hover:bg-teal-700/50 backdrop-blur-sm transition-transform hover:-translate-y-1">
+                    Testar IA Veterinária
+                    <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section id="quem-somos" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Sobre a Iniciativa</h2>
+                <p class="mt-4 text-lg text-gray-500">Projeto Social do IFCE Campus Iguatu</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="bg-teal-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-teal-100 p-3 rounded-full mr-4">
+                            <i data-lucide="users" class="h-6 w-6 text-teal-700"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Quem Somos</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Estudantes da disciplina de Projetos Sociais, do curso de Graduação em Ciências da
+                        Computação do Instituto Federal do Ceará – IFCE/Iguatu.
+                    </p>
+                </div>
+                <div class="bg-blue-50 rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i data-lucide="target" class="h-6 w-6 text-blue-700"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Objetivo</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Divulgar e dar apoio aos Projetos Sociais da disciplina, com foco específico no desenvolvimento de soluções tecnológicas para o bem-estar animal.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECT DETAILS -->
+    <section id="projeto" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-teal-600 font-semibold tracking-wide uppercase text-sm">Inovação e Cuidado</span>
+                <h2 class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">Ecossistema Pet Tech</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+                    Nossa missão é desenvolver soluções integradas para modernizar a relação entre tutores, veterinários e animais.
+                </p>
+            </div>
+            <!-- Grid de Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 group">
+                    <div class="bg-teal-50 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-teal-100 transition-colors">
+                        <i data-lucide="smartphone" class="h-7 w-7 text-teal-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Apps de Adoção</h3>
+                    <p class="text-gray-600 leading-relaxed">Plataformas que conectam abrigos e ONGs a pessoas interessadas em adotar, utilizando algoritmos de 'match' para encontrar o lar ideal.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 group">
+                    <div class="bg-blue-50 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors">
+                        <i data-lucide="activity" class="h-7 w-7 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Saúde Digital</h3>
+                    <p class="text-gray-600 leading-relaxed">Prontuários eletrônicos universais e sistemas de telemetria para monitorar sinais vitais de animais em tempo real.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 group">
+                    <div class="bg-purple-50 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-100 transition-colors">
+                        <i data-lucide="settings" class="h-7 w-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">IoT e Wearables</h3>
+                    <p class="text-gray-600 leading-relaxed">Coleiras inteligentes com GPS, alimentadores automáticos programáveis e bebedouros que monitoram o consumo de água.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 group">
+                    <div class="bg-green-50 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-100 transition-colors">
+                        <i data-lucide="home" class="h-7 w-7 text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Lar Inteligente</h3>
+                    <p class="text-gray-600 leading-relaxed">Automação residencial focada em pets, permitindo monitoramento por câmeras e controle de temperatura ambiente.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 group">
+                    <div class="bg-orange-50 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-100 transition-colors">
+                        <i data-lucide="cpu" class="h-7 w-7 text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">IA Aplicada</h3>
+                    <p class="text-gray-600 leading-relaxed">Utilização de Inteligência Artificial para pré-diagnósticos visuais e análise comportamental preventiva.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 group">
+                    <div class="bg-red-50 w-14 h-14 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-100 transition-colors">
+                        <i data-lucide="shield-check" class="h-7 w-7 text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Segurança de Dados</h3>
+                    <p class="text-gray-600 leading-relaxed">Proteção das informações dos tutores e histórico médico dos animais com criptografia de ponta a ponta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION (Uniform Grid Layout - Dynamic Images) -->
+    <section id="galeria" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-gray-900">Galeria Pet Tech</h2>
+                    <p class="mt-2 text-gray-500">Momentos que nos inspiram (Imagens dinâmicas).</p>
+                </div>
+                <div class="hidden md:flex bg-teal-50 p-3 rounded-full">
+                    <i data-lucide="camera" class="h-6 w-6 text-teal-600"></i>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Foto 1: Veterinário -->
+                <div class="group relative h-72 w-full overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-gray-100">
+                    <img src="https://loremflickr.com/800/600/veterinarian?random=1" 
+                         alt="Cuidado Veterinário" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 dynamic-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-white font-bold text-xl">Cuidado Veterinário</h3>
+                        <p class="text-gray-200 text-sm mt-1">Atenção especializada para saúde do seu pet</p>
+                    </div>
+                </div>
+
+                <!-- Foto 2: Gato -->
+                <div class="group relative h-72 w-full overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-gray-100">
+                    <img src="https://loremflickr.com/800/600/cat?random=2" 
+                         alt="Monitoramento Felino" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 dynamic-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-white font-bold text-xl">Monitoramento Felino</h3>
+                        <p class="text-gray-200 text-sm mt-1">Soluções pensadas para o conforto dos gatos</p>
+                    </div>
+                </div>
+
+                <!-- Foto 3: Cão -->
+                <div class="group relative h-72 w-full overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-gray-100">
+                    <img src="https://loremflickr.com/800/600/dog?random=3" 
+                         alt="Adoção e Felicidade" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 dynamic-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-white font-bold text-xl">Adoção e Felicidade</h3>
+                        <p class="text-gray-200 text-sm mt-1">Encontrando lares amorosos para cada amigo</p>
+                    </div>
+                </div>
+
+                <!-- Foto 4: Gato dormindo -->
+                <div class="group relative h-72 w-full overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-gray-100">
+                    <img src="https://loremflickr.com/800/600/cat,sleep?random=4" 
+                         alt="Bem-estar em Casa" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 dynamic-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-white font-bold text-xl">Bem-estar em Casa</h3>
+                        <p class="text-gray-200 text-sm mt-1">Tecnologia integrada ao dia a dia do animal</p>
+                    </div>
+                </div>
+
+                <!-- Foto 5: Humano e Pet -->
+                <div class="group relative h-72 w-full overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-gray-100">
+                    <img src="https://loremflickr.com/800/600/dog,human?random=5" 
+                         alt="Conexão Real" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 dynamic-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-white font-bold text-xl">Conexão Real</h3>
+                        <p class="text-gray-200 text-sm mt-1">Fortalecendo o vínculo entre tutor e pet</p>
+                    </div>
+                </div>
+
+                 <!-- Foto 6: Filhotes -->
+                 <div class="group relative h-72 w-full overflow-hidden rounded-2xl shadow-lg cursor-pointer bg-gray-100">
+                    <img src="https://loremflickr.com/800/600/puppy?random=6" 
+                         alt="Filhotes" 
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 dynamic-img">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h3 class="text-white font-bold text-xl">Filhotes</h3>
+                        <p class="text-gray-200 text-sm mt-1">Cuidado especial para os primeiros meses</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI ASSISTANT SECTION -->
+    <section id="ia" class="py-16 bg-gradient-to-br from-teal-600 to-teal-800 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <div class="inline-flex items-center justify-center p-3 bg-teal-500 rounded-full mb-4 shadow-lg">
+                    <i data-lucide="sparkles" class="h-6 w-6 text-yellow-300"></i>
+                </div>
+                <h2 class="text-3xl font-bold">Assistente Virtual Pet</h2>
+                <p class="mt-2 text-teal-100">Uma demonstração prática de nossas soluções digitais.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden h-[500px] flex flex-col">
+                <div class="bg-gray-100 px-6 py-3 border-b border-gray-200 flex items-center">
+                    <div class="bg-teal-600 p-2 rounded-full mr-3">
+                        <i data-lucide="bot" class="h-5 w-5 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-800">IA Veterinária (Demo)</h3>
+                        <p class="text-xs text-gray-500">Powered by Gemini</p>
+                    </div>
+                </div>
+
+                <div id="chat-messages" class="flex-grow overflow-y-auto p-6 space-y-4 bg-gray-50">
+                    <!-- Mensagem Inicial -->
+                    <div class="flex justify-start chat-bubble">
+                        <div class="max-w-[80%] rounded-2xl px-5 py-3 text-sm leading-relaxed shadow-sm bg-white text-gray-800 border border-gray-100 rounded-bl-none">
+                            Olá! Sou o assistente virtual do projeto Pet Tech. Posso ajudar com dicas sobre adoção responsável, cuidados básicos com pets ou tecnologia para animais. O que você gostaria de saber?
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-white border-t border-gray-200">
+                    <div class="flex items-center space-x-2">
+                        <input type="text" id="chat-input" placeholder="Ex: Qual a melhor ração para gatos idosos?" class="flex-grow text-gray-800 placeholder-gray-400 border border-gray-300 rounded-full px-5 py-3 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all">
+                        <button id="send-btn" class="bg-teal-600 text-white p-3 rounded-full hover:bg-teal-700 transition-colors shadow-md">
+                            <i data-lucide="send" class="h-5 w-5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESOURCES SECTION -->
+    <section id="recursos" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center mb-10">
+                <div class="bg-teal-100 p-3 rounded-lg mr-4">
+                    <i data-lucide="folder-open" class="h-8 w-8 text-teal-700"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900">Acervo Digital</h2>
+                    <p class="text-gray-500">Sub-pastas: Conteúdos educativos e materiais de apoio</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Item 1 -->
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow cursor-pointer bg-gray-50 hover:bg-white group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-2 bg-white rounded-lg shadow-sm group-hover:bg-gray-50 transition-colors">
+                            <i data-lucide="file-text" class="h-6 w-6 text-blue-500"></i>
+                        </div>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-800">Artigo</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">Tecnologia Veterinária</h3>
+                    <p class="text-sm text-gray-600 mb-4 h-10">Como a telemedicina está mudando o atendimento pet.</p>
+                    <a href="#" class="text-sm font-medium text-teal-600 hover:text-teal-500 flex items-center">Acessar <i data-lucide="external-link" class="h-3 w-3 ml-1"></i></a>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow cursor-pointer bg-gray-50 hover:bg-white group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-2 bg-white rounded-lg shadow-sm group-hover:bg-gray-50 transition-colors">
+                            <i data-lucide="video" class="h-6 w-6 text-red-500"></i>
+                        </div>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-800">Vídeo</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">Tutorial App Adoção</h3>
+                    <p class="text-sm text-gray-600 mb-4 h-10">Guia passo a passo para encontrar seu novo amigo.</p>
+                    <a href="#" class="text-sm font-medium text-teal-600 hover:text-teal-500 flex items-center">Acessar <i data-lucide="external-link" class="h-3 w-3 ml-1"></i></a>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow cursor-pointer bg-gray-50 hover:bg-white group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-2 bg-white rounded-lg shadow-sm group-hover:bg-gray-50 transition-colors">
+                            <i data-lucide="book-open" class="h-6 w-6 text-green-500"></i>
+                        </div>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-800">E-book</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">Manual do Adotante</h3>
+                    <p class="text-sm text-gray-600 mb-4 h-10">Tudo que você precisa saber antes de adotar.</p>
+                    <a href="#" class="text-sm font-medium text-teal-600 hover:text-teal-500 flex items-center">Acessar <i data-lucide="external-link" class="h-3 w-3 ml-1"></i></a>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow cursor-pointer bg-gray-50 hover:bg-white group">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="p-2 bg-white rounded-lg shadow-sm group-hover:bg-gray-50 transition-colors">
+                            <i data-lucide="external-link" class="h-6 w-6 text-purple-500"></i>
+                        </div>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-800">Link</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-teal-600 transition-colors">Projeto Ruas</h3>
+                    <p class="text-sm text-gray-600 mb-4 h-10">Referência em assistência social e tecnologia.</p>
+                    <a href="https://www.projetoruas.org.br/" class="text-sm font-medium text-teal-600 hover:text-teal-500 flex items-center">Acessar <i data-lucide="external-link" class="h-3 w-3 ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contato" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Fale Conosco</h2>
+                    <p class="text-lg text-gray-600 mb-8">Tem alguma dúvida ou quer contribuir? Entre em contato.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i data-lucide="mail" class="h-6 w-6 text-teal-600 mt-1"></i>
+                            <div class="ml-4">
+                                <p class="text-base font-medium text-gray-900">Email</p>
+                                <p class="text-gray-500">contato@pet-tech.ifce.edu.br</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="phone" class="h-6 w-6 text-teal-600 mt-1"></i>
+                            <div class="ml-4">
+                                <p class="text-base font-medium text-gray-900">WhatsApp</p>
+                                <p class="text-gray-500">(88) 99999-9999</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="map-pin" class="h-6 w-6 text-teal-600 mt-1"></i>
+                            <div class="ml-4">
+                                <p class="text-base font-medium text-gray-900">Endereço</p>
+                                <p class="text-gray-500">IFCE - Campus Iguatu<br/>Rodovia Iguatu/Várzea Alegre, km 05</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Nome completo</label>
+                            <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3" placeholder="Seu nome">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3" placeholder="seu@email.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Mensagem</label>
+                            <textarea rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm border p-3" placeholder="Como podemos ajudar?"></textarea>
+                        </div>
+                        <button type="button" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 transition-colors">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i data-lucide="paw-print" class="h-6 w-6 text-teal-500 mr-2"></i>
+                        <span class="font-bold text-xl tracking-tight">Pet<span class="text-teal-500">Tech</span></span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Conectando tecnologia e cuidado animal. Inovação digital do IFCE.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Links Rápidos</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#quem-somos" class="hover:text-teal-400">Quem Somos</a></li>
+                        <li><a href="#projeto" class="hover:text-teal-400">Nossas Soluções</a></li>
+                        <li><a href="#galeria" class="hover:text-teal-400">Galeria</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Institucional</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>IFCE - Campus Iguatu</li>
+                        <li>Ciências da Computação</li>
+                        <li>Disciplina: Projetos Sociais</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">Newsletter</h4>
+                    <div class="flex">
+                        <input type="email" placeholder="Seu email" class="bg-gray-800 border-none text-white px-4 py-2 rounded-l-md w-full outline-none text-sm">
+                        <button class="bg-teal-600 px-4 py-2 rounded-r-md hover:bg-teal-700 text-sm font-medium">OK</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2024 Pet Tech IFCE. Todos os direitos reservados.</p>
+                <p class="mt-2 md:mt-0">Professor Orientador: Cláudio Damasceno</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Inicializar ícones
+        lucide.createIcons();
+
+        // Menu Mobile
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Chat Simples (Demo)
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const chatMessages = document.getElementById('chat-messages');
+
+        function addMessage(text, isUser) {
+            const div = document.createElement('div');
+            div.className = `flex ${isUser ? 'justify-end' : 'justify-start'} chat-bubble`;
+            div.innerHTML = `
+                <div class="max-w-[80%] rounded-2xl px-5 py-3 text-sm leading-relaxed shadow-sm ${
+                    isUser 
+                    ? 'bg-teal-600 text-white rounded-br-none' 
+                    : 'bg-white text-gray-800 border border-gray-100 rounded-bl-none'
+                }">
+                    ${text}
+                </div>
+            `;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function handleSend() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            addMessage(text, true);
+            chatInput.value = '';
+
+            // Simulação de resposta (Para conectar a API real, seria necessário backend ou configuração de build)
+            setTimeout(() => {
+                const respostas = [
+                    "Essa é uma ótima pergunta! No Pet Tech, usamos sensores IoT para monitorar isso.",
+                    "Para adoção responsável, recomendamos verificar nosso app de 'match' entre tutores e pets.",
+                    "A saúde do seu animal pode ser acompanhada via nosso prontuário digital.",
+                    "Isso é muito importante. Recomendamos consultar um veterinário parceiro do projeto."
+                ];
+                const randomResponse = respostas[Math.floor(Math.random() * respostas.length)];
+                addMessage(randomResponse, false);
+            }, 1000);
+        }
+
+        sendBtn.addEventListener('click', handleSend);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSend();
+        });
+
+        // Dynamic Images Script
+        // This forces new images on reload by appending a timestamp to loremflickr URLs
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryImages = document.querySelectorAll('.dynamic-img');
+            const timestamp = new Date().getTime();
+            galleryImages.forEach(img => {
+                if (img.src.includes('loremflickr')) {
+                    // Check if it already has parameters
+                    const separator = img.src.includes('?') ? '&' : '?';
+                    img.src = `${img.src}${separator}t=${timestamp}`;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
