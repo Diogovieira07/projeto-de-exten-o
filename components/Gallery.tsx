@@ -4,34 +4,40 @@ import { Camera } from 'lucide-react';
 export const Gallery: React.FC = () => {
   const images = [
     {
-      // Vet examining a dog
-      url: "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=800&auto=format&fit=crop",
-      title: "Cuidado Veterinário",
-      desc: "Atenção especializada para saúde do seu pet"
+      // Vet with dog
+      url: "https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?q=80&w=800&auto=format&fit=crop",
+      title: "Cuidado Profissional",
+      desc: "Tecnologia a serviço da medicina veterinária"
     },
     {
-      // Cute Cat close up
+      // Cat eyes
       url: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?q=80&w=800&auto=format&fit=crop",
-      title: "Monitoramento Felino",
-      desc: "Soluções pensadas para o conforto dos gatos"
+      title: "Olhar Felino",
+      desc: "Monitoramento comportamental inteligente"
     },
     {
-      // Happy Dog outdoors
-      url: "https://images.unsplash.com/photo-1544568100-847a948585b9?q=80&w=800&auto=format&fit=crop",
-      title: "Adoção e Felicidade",
-      desc: "Encontrando lares amorosos para cada amigo"
+      // Dogs playing
+      url: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=800&auto=format&fit=crop",
+      title: "Socialização",
+      desc: "Apps para encontros e brincadeiras em parques"
     },
     {
-      // Cat playing or relaxing
-      url: "https://images.unsplash.com/photo-1519052537078-e6302a4968ef?q=80&w=800&auto=format&fit=crop",
-      title: "Bem-estar em Casa",
-      desc: "Tecnologia integrada ao dia a dia do animal"
+      // Dog tech/smart
+      url: "https://images.unsplash.com/photo-1587559070757-f72a388edbba?q=80&w=800&auto=format&fit=crop",
+      title: "Pets Conectados",
+      desc: "Wearables e coleiras inteligentes (IoT)"
     },
     {
-      // Human and Dog high five/paw
-      url: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=800&auto=format&fit=crop",
-      title: "Conexão Real",
-      desc: "Fortalecendo o vínculo entre tutor e pet"
+      // Cat and human
+      url: "https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=800&auto=format&fit=crop",
+      title: "Laços Fortes",
+      desc: "Aproximando tutores e seus companheiros"
+    },
+    {
+      // Cute Puppy
+      url: "https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=800&auto=format&fit=crop",
+      title: "Novos Começos",
+      desc: "Facilitando a adoção responsável"
     }
   ];
 
@@ -48,7 +54,7 @@ export const Gallery: React.FC = () => {
             </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[200px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
            {/* Custom Masonry-like Grid */}
            <div className="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-2xl shadow-md cursor-pointer">
                 <img src={images[0].url} alt={images[0].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -81,11 +87,20 @@ export const Gallery: React.FC = () => {
                     <p className="text-gray-200 text-xs">{images[3].desc}</p>
                 </div>
            </div>
-             <div className="md:col-span-2 md:row-span-1 relative group overflow-hidden rounded-2xl shadow-md cursor-pointer">
+           
+           <div className="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-2xl shadow-md cursor-pointer">
                 <img src={images[4].url} alt={images[4].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                    <h3 className="text-white font-bold text-lg">{images[4].title}</h3>
+                    <p className="text-gray-200 text-xs">{images[4].desc}</p>
+                </div>
+           </div>
+
+             <div className="md:col-span-1 md:row-span-1 relative group overflow-hidden rounded-2xl shadow-md cursor-pointer">
+                <img src={images[5].url} alt={images[5].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <h3 className="text-white font-bold text-xl">{images[4].title}</h3>
-                    <p className="text-gray-200 text-sm">{images[4].desc}</p>
+                    <h3 className="text-white font-bold text-xl">{images[5].title}</h3>
+                    <p className="text-gray-200 text-sm">{images[5].desc}</p>
                 </div>
            </div>
         </div>
